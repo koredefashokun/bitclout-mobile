@@ -1,12 +1,22 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import * as AuthSession from "expo-auth-session";
 import Button from "../components/Button";
 
 const Onboarding = () => {
+  // const [] = AuthSession.useAuthRequest({}, {});
+  const signUp = async () => {
+    const r = await AuthSession.startAsync({
+      authUrl: "https://identity.bitclout.com",
+    });
+    console.log({ r });
+  };
+  const logIn = async () => {};
+
   return (
     <View style={styles.container}>
-      <Button />
-      <Button />
+      <Button onPress={signUp}>Sign Up</Button>
+      <Button onPress={logIn}>Log In</Button>
     </View>
   );
 };
